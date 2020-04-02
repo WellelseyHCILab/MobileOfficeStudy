@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Mobile Office</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom CSS -->
+  <link href="custom.css" rel="stylesheet">
+</head>
+
+<body>
+
+ <!-- Nav header -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">Mobile Office Study</a>
+    </div>
+  </nav>
+
+  <!-- Podcast Scenario Info -->
+  <div class="container" id="about">
+    <div class="row">
+      <div class="col-lg-12 text-center">
+        <h1 class="mt-5">Podcast Scenario</h1>
+        <br>
+      </div>
+        <div class="col-lg-12 text-left">
+          <div class="pageText">
+            <p>Imagine you are in an autonomous vehicle.</p>
+            <p>The car has just taken over and is driving you safely to your destination.</p>
+            <p>You want to listen to “The 7 Habits of Highly Effective People” podcast for work.</p>
+            <p>As you're listening to the podcast, you want to pause and bookmark certain sections.</p>
+
+            <br>
+
+            <form>
+
+            <!--Task 2-->
+            <h4>Task 2:</h4>
+            <p>Here is an image of the in-vehicle user interface:</p>
+            <img src="images/Podcast/1.png" alt="task2_before" height="364" width="1000">
+            <br>
+            <br>
+            <p>How would you play the podcast “The 7 Habits of Highly Effective People”? What input command would result in the following user interface?</p>
+            <img src="images/Podcast/2.png" alt="task2_after" height="364" width="1000">
+            <br>
+            <br>
+
+              <!--Video Recording Elements-->
+              <div>
+                  <div class="left">
+                    <p>Video Preview</p>
+                    <video id="previewVoice" width="160" height="120" autoplay muted controls></video>
+                    <div class="recButtons">
+                      <!-- Start recording button-->
+                      <div id="startButtonVoice" class="button">
+                        <button type="button" class="btn btn-primary">Start</button>
+                      </div>
+                      <!--Stop recording -->
+                      <div id="stopButtonVoice" class="stopBttn" class="button">
+                        <button type="button" class="btn btn-primary">Stop</button>
+                      </div>
+                  </div>
+
+                  </div>
+
+                  <div class="right">
+                    <br>
+                    <p>Recording</p>
+                    <video class="vidPrev" id="recordingVoice" width="160" height="120" controls></video>
+                  </div>
+                </div>
+              <br>
+
+          <div class="form-group">
+               <label for="gesture_task1">Using a gesture, how would you complete this task?</label>
+              <br>
+              <!--Video Recording Elements-->
+              <div>
+                  <div class="left">
+                    <p>Video Preview</p>
+                    <video id="previewGest" width="160" height="120" autoplay muted controls></video>
+                    <div class="recButtons">
+                      <!-- Start recording button-->
+                      <div id="startButtonGest" class="button">
+                        <button type="button" class="btn btn-primary">Start</button>
+                      </div>
+                      <!--Stop recording -->
+                      <div id="stopButtonGest" class="stopBttn" class="button">
+                        <button type="button" class="btn btn-primary">Stop</button>
+                      </div>
+                  </div>
+
+                  </div>
+
+                  <div class="right">
+                    <br>
+                    <p>Recording</p>
+                    <video class="vidPrev" id="recordingGest" width="160" height="120" controls></video>
+                  </div>
+                </div>
+                <br>
+          </div>
+
+            <div>
+              <label for="exampleFormControlSelect1">What is your <b>preferred</b> interaction method for this task?</label>
+              <select class="form-control" id="exampleFormControlSelect1">
+              <option>Select an input</option>
+              <option>Voice</option>
+              <option>Gesture</option>
+              </select>
+              <br>
+              <label for="exampleFormControlSelect1">What is your <b>second</b> choice interaction method for this task?</label>
+              <select class="form-control" id="exampleFormControlSelect1">
+              <option>Select an input</option>
+              <option>Voice</option>
+              <option>Gesture</option>
+              </select>
+              <br>
+              <label for="exampleFormControlTextarea1">Why do you prefer these interaction method for this task?</label>
+              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            </div>
+            <br>
+            <!--End Task 2-->
+
+            </form>
+          </div>
+        </div>
+
+          <!--Back and Next Buttons-->
+           <div class="col-lg-12 text-center">
+            <br>
+            <a href="5_podcast_t1.html"><button type="button" class="btn btn-primary">Back</button></a>
+            <a href="5_podcast_t3.html"><button type="button" class="btn btn-primary">Next</button></a>
+           </div>
+     </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.slim.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Video Recording Scripts -->
+  <script src="js/main.js"></script>
+
+</body>
+
+<!-- Footer -->
+<footer class="page-footer font-small blue">
+  <hr class="my-4">
+  <!-- Copyright -->
+  <div class="footer-copyright text-center py-3">© 2020 Copyright:
+    <a href="http://cs.wellesley.edu/~hcilab/">Wellesley HCI Lab</a>
+  </div>
+  <!-- Copyright -->
+
+</footer>
+<!-- Footer -->
+
+</html>

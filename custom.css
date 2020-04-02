@@ -1,0 +1,34 @@
+/* Make the texts in all the pages size 16*/
+.pageText {
+	font-size: 18px;
+}
+
+/* Make the text under the questions in ex_scenario.html have an index. */
+p.exScenarioText {
+	text-indent: 5%;s
+}
+
+
+/* Format the videos on the user surverys to be left and right aligned. 
+.right has the video preview, .left has the live recordings*/
+.right {
+	padding-left: 30%;
+	display: inline-block;
+}
+
+.left {
+	display: inline-block;
+}
+
+/*Format particulat elements of the video recording to align as needed. */
+.recButtons {
+	display: flex;
+}
+
+.stopBttn {
+	margin-left: 25%;
+}
+
+.vidPrev {
+	margin-bottom: 19%;
+}
