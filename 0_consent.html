@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 
   <meta charset="utf-8">
@@ -13,6 +12,9 @@
   <!-- Bootstrap core CSS -->
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
+  <!--JQuery CDN-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	
 </head>
 
 <body>
@@ -25,6 +27,7 @@
   </nav>
 
   <!-- Consent Form -->
+ <div id="consentFormPage">
   <div class="container" id="about">
     <div class="row">
       <div class="col-lg-12 text-center">
@@ -55,7 +58,7 @@
 
         <p><b>Participation and withdrawal: </b>Your participation is completely voluntary, and you may quit at any time without penalty. Exit the survey as needed. None of your information will be used should you choose to quit.</p>
 
-        <p><b>To Contact the Researcher: </b>f you have any questions or concerns about this study, you can contact the primary investigator, Orit Shaer, at oshaer@wellesley.edu.</p>
+        <p><b>To Contact the Researcher: </b>If you have any questions or concerns about this study, you can contact the primary investigator, Orit Shaer, at oshaer@wellesley.edu.</p>
         
         <p>If you have questions about your rights in this research, concerns, suggestions, or complaints that are not being addressed by the researcher, or research-related harm:</p>
 
@@ -65,32 +68,33 @@
         
         <p>Please type your name below if you agree to the above statements:</p>
 
-        <form action="http://cs.wellesley.edu:10019/consentform/" method="POST">
+       <form action="http://cs.wellesley.edu:8133/consentform/" method="POST">
           <div class="form-group">
             <label class="col-form-label" for="name" >Name: </label>
             <input name="name" class="form-control w-25 p-3" type="text" placeholder="Name" id="name">
             <br>
             <label class="col-form-label" for="date"> Date: </label>
-            <input name="date" class="form-control w-25 p-3"type="date" id="date">
+            <input name="date" class="form-control w-25 p-3" type="date" id="date">
           </div>
-        </div>
 
         <!--Submit Button-->
          <div class="col-lg-12 text-center">
           <br>
-           <input type="submit" value="Submit Consent Form" class="btn btn-primary">
+           <input type="submit" id="consentSubmit" value="Submit Consent Form" class="btn btn-primary">
          </div>
       </form>
-
     </div>
   </div>
 
-  <!-- Sending server requests -->
+  <!-- Video Recording Scripts -->
+  <script type="text/javascript" src="js/main.js"></script>
+
 
   <!-- Bootstrap core JavaScript -->
   <script src="vendor/jquery/jquery.slim.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
+ </div>
+</div>
 </body>
-
 </html>

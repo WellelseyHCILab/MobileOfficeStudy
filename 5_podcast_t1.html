@@ -15,8 +15,11 @@
 
   <!-- Custom CSS -->
   <link href="custom.css" rel="stylesheet">
+	
+   <!--JQuery CDN-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	
 </head>
-
 <body>
 
  <!-- Nav header -->
@@ -27,6 +30,7 @@
   </nav>
 
   <!-- Podcast Scenario Info -->
+ <div class="scenarioPage">
   <div class="container" id="about">
     <div class="row">
       <div class="col-lg-12 text-center">
@@ -42,7 +46,9 @@
 
             <br>
 
-            <form>
+            <form action="http://cs.wellesley.edu:8133/podcast/" method="POST">
+			<input type="hidden" name="taskNum" id="taskNum" value="1">
+			<input type="hidden" name="taskType" id="taskType" value="podcast">
 
             <!--Task 1-->
             <h4>Task 1:</h4>
@@ -116,38 +122,36 @@
             </div>
 
             <div>
-              <label for="exampleFormControlSelect1">What is your <b>preferred</b> interaction method for this task?</label>
-              <select class="form-control" id="exampleFormControlSelect1">
+              <label for="select">What is your <b>preferred</b> interaction method for this task?</label>
+              <select class="form-control" id="select" name="select">
               <option>Select an input</option>
               <option>Voice</option>
               <option>Gesture</option>
               </select>
               <br>
-              <label for="exampleFormControlSelect1">What is your <b>second</b> choice interaction method for this task?</label>
-              <select class="form-control" id="exampleFormControlSelect1">
-              <option>Select an input</option>
-              <option>Voice</option>
-              <option>Gesture</option>
-              </select>
-              <br>
-              <label for="exampleFormControlTextarea1">Why do you prefer these interaction method for this task?</label>
-              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+              <label for="textarea">Why do you prefer this interaction method for this task?</label>
+			  <textarea class="form-control" id="textarea" rows="3" name="textarea"></textarea>
             </div>
             <br>
             <!--End Task 1-->
 
-            </form>
+            
           </div>
 
           <!--Back and Next Buttons-->
            <div class="col-lg-12 text-center">
             <br>
-            <a href="4_ex_scenario.html"><button type="button" class="btn btn-primary">Back</button></a>
-            <a href="5_podcast_t2.html"><button type="button" class="btn btn-primary">Next</button></a>
+            <!--<a href="4_ex_scenario.html"><button type="button" class="btn btn-primary">Back</button></a>-->
+			 <!--<a href="5_podcast_t2.html"><button type="button" class="btn btn-primary">Next</button></a>-->
+				<br>
+				 <input type="submit" value="Next" class="btn btn-primary">
+				 <!--<a href="5_podcast_t1.html"><button type="button" class="btn btn-primary">Begin Tasks</button></a>-->
            </div>
+		</form>
      </div>
     </div>
   </div>
+</div>
 
   <!-- Bootstrap core JavaScript -->
   <script src="vendor/jquery/jquery.slim.min.js"></script>
@@ -155,6 +159,9 @@
 
   <!-- Video Recording Scripts -->
   <script src="js/main.js"></script>
+
+  <!--AJAX Library-->
+  <script src="https://ajax.googleapis.com/ajax/libs/d3js/5.15.1/d3.min.js"></script>
 
 </body>
 

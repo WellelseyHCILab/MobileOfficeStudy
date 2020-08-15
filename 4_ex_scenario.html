@@ -15,6 +15,9 @@
 
   <!-- Custom CSS -->
   <link href="custom.css" rel="stylesheet">
+	
+   <!--JQuery CDN-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 </head>
 
@@ -75,11 +78,14 @@
         </div>
       </div>
 
-      <!--Back and Next Buttons-->
-       <div class="col-lg-12 text-center">
-        <br>
-         <a href="5_podcast_t1.html"><button type="button" class="btn btn-primary">Begin Tasks</button></a>
-       </div>
+		<!--Buttons to begin task-->
+		 <div class="col-lg-12 text-center">
+			<form action="http://cs.wellesley.edu:8133/worktask/" method="POST">
+				<br>
+				 <input type="submit" value="Begin Tasks" class="btn btn-primary">
+				 <!--<a href="5_podcast_t1.html"><button type="button" class="btn btn-primary">Begin Tasks</button></a>-->
+			</form>
+		</div>
     </div>
   </div>
 

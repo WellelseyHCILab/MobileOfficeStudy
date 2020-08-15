@@ -47,15 +47,17 @@
              
           <p>This study is part of a larger National Science Foundation (NSF) funded project about The Mobile Office: Future of Work in Highly-Automated Cars.</p>
              
-          <p>More information about the project and the investigators can be found on our website: <a href="https://cs.wellesley.edu/~mobileoffice">Mobile Office</a>.</p>
+          <p>More information about the project and the investigators can be found on our website: <a href="https://cs.wellesley.edu/~mobileoffice" target="_blank">Mobile Office</a>.</p>
         </div>
       </div>
 
        <!--Begin Survey Button-->
-       <div class="col-lg-12 text-center">
-        <br>
-         <a href="0_consent.html"><button type="button" class="btn btn-primary">Begin</button></a>
-       </div>
+	    <form action="http://cs.wellesley.edu:8133/start/" method="POST">
+		   <div class="col-lg-12 text-center">
+			<br>
+			 <input type="submit" id="beginBttn" value="Begin" class="btn btn-primary">
+		   </div>
+		 </form>
        <!--End of survey buttons-->
 
     </div>
