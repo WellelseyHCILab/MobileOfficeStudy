@@ -32,7 +32,7 @@ if(top.location.pathname.includes("5") || top.location.pathname.includes("6") ||
 	//the recording process
 	function startRecording(stream, lengthInMS) {
 	  let recorder = new MediaRecorder(stream);
-	  let data = []; //holds Blobds of media data
+	  let data = []; //holds Blobs of media data
 
 	  recorder.ondataavailable = event => data.push(event.data);
 	  recorder.start();
@@ -75,6 +75,11 @@ if(top.location.pathname.includes("5") || top.location.pathname.includes("6") ||
 		  if(type=="voice"){
 			  console.log("Task Num is..."+taskNum);
 			  console.log("Task Type is..."+taskType);
+			  sessionStorage.setItem('test','test1');
+			  console.log("storing a session variable...");
+			  //store in a session var
+			  console.log(recording.src);
+			  sessionStorage.setItem('blobURL', recording.src);
 		  }
 		  else {
 
@@ -86,15 +91,18 @@ if(top.location.pathname.includes("5") || top.location.pathname.includes("6") ||
 	//function that controls the stop button procedure
 	function stopButtonAction(preview){
 	  stop(preview.srcObject);
-	}
-
-	//check if browser supports html5
-	function supports_html5_storage() {
-	  try {
-		return 'localStorage' in window && window['localStorage'] !== null;
-	  } catch (e) {
-		return false;
-	  }
+//		 if(type=="voice"){
+//			  console.log("Task Num is..."+taskNum);
+//			  console.log("Task Type is..."+taskType);
+//			  sessionStorage.setItem('test','test1');
+//			  console.log("storing a session variable...");
+//			  //store in a session var
+//			  console.log(recording.src);
+//			  sessionStorage.setItem('blobURL', recording.src);
+//		  }
+//		  else {
+//
+//		  }
 	}
 
 	//event handlers for a click event in the voice record buttons
