@@ -1,7 +1,7 @@
 //Info on Media Stream and base code can be found at 
 //https://developer.mozilla.org/en-US/docs/Web/API/MediaStream_Recording_API/Recording_a_media_element
 
-console.log("Edited 5");
+console.log("Version 9");
 
 if(top.location.pathname.includes("5") || top.location.pathname.includes("6") || top.location.pathname.includes("7") || top.location.pathname.includes("8")){
 	
@@ -19,11 +19,46 @@ if(top.location.pathname.includes("5") || top.location.pathname.includes("6") ||
 	let startButtonGest = document.getElementById("startButtonGest");
 	let stopButtonGest = document.getElementById("stopButtonGest");
 	
-	var taskNum = document.getElementById('taskNum').value;
-	var taskType = document.getElementById('taskType').value;
+	let taskNum = document.getElementById('taskNum').value;
+	let taskType = document.getElementById('taskType').value;
+	
 	
 	//Specifies the length of the videos we will record
 	let recordingTimeMS = 15000;
+	
+	let form = document.getElementById('surveyForm');
+	
+	form.addEventListener("submit", function (event) {
+         event.preventDefault(); // prevent form submission and reloading the page.
+			let formInfo = new FormData(form)
+		//formInfo.append('voiceBlob', voiceBlob)
+		
+//		let request = new XMLHttpRequest();
+//		request.open("POST", "https://cs.wellesley.edu:8133/podcast/", true);
+//		console.log('form info', ...formInfo)
+//		for (var [key, value] of formInfo.entries()) { 
+//  			console.log(key, value);
+//		}
+//		request.send(formInfo);
+		var url = 'https://cs.wellesley.edu:8133/podcast/';
+
+		fetch(url, {
+			method: 'post',
+			headers: {
+			  "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
+			},
+			body: formInfo
+			})
+		.then(function (data) {
+		console.log('Request succeeded with JSON response', data);
+		})
+		.catch(function (error) {
+		console.log('Request failed', error);
+		});
+			
+     });
+	
+	let voiceBlob = null;
 
 	function wait(delayInMS) {
 	  return new Promise(resolve => setTimeout(resolve, delayInMS));
@@ -59,7 +94,7 @@ if(top.location.pathname.includes("5") || top.location.pathname.includes("6") ||
 	}
 
 	//function that controls the start button procedure
-	function startButtonAction(preview,recording,type){
+	function startButtonAction(preview,recording){
 	  //request a new Media stream
 	  navigator.mediaDevices.getUserMedia({
 		video: true,
@@ -71,19 +106,10 @@ if(top.location.pathname.includes("5") || top.location.pathname.includes("6") ||
 	  }).then(() => startRecording(preview.captureStream(), recordingTimeMS))
 	  .then (recordedChunks => {
 		let recordedBlob = new Blob(recordedChunks, { type: "video/webm" });
-		recording.src = URL.createObjectURL(recordedBlob);
-		  if(type=="voice"){
-			  console.log("Task Num is..."+taskNum);
-			  console.log("Task Type is..."+taskType);
-			  sessionStorage.setItem('test','test1');
-			  console.log("storing a session variable...");
-			  //store in a session var
-			  console.log(recording.src);
-			  sessionStorage.setItem('blobURL', recording.src);
-		  }
-		  else {
-
-		  }
+		  recording.src = URL.createObjectURL(recordedBlob);
+		  console.log(recordedBlob);
+		  sessionStorage.setItem("blobData",recordedBlob);
+		  voiceBlob = recordedBlob;
 	  })
 	  .catch("Error");
 	}
@@ -91,25 +117,13 @@ if(top.location.pathname.includes("5") || top.location.pathname.includes("6") ||
 	//function that controls the stop button procedure
 	function stopButtonAction(preview){
 	  stop(preview.srcObject);
-//		 if(type=="voice"){
-//			  console.log("Task Num is..."+taskNum);
-//			  console.log("Task Type is..."+taskType);
-//			  sessionStorage.setItem('test','test1');
-//			  console.log("storing a session variable...");
-//			  //store in a session var
-//			  console.log(recording.src);
-//			  sessionStorage.setItem('blobURL', recording.src);
-//		  }
-//		  else {
-//
-//		  }
 	}
 
 	//event handlers for a click event in the voice record buttons
-	startButtonVoice.addEventListener("click", function(){startButtonAction(previewVoice,recordingVoice,"voice")}, false);
+	startButtonVoice.addEventListener("click", function(){startButtonAction(previewVoice,recordingVoice)}, false);
 	stopButtonVoice.addEventListener("click", function(){stopButtonAction(previewVoice)}, false);
 
 	//event handlers for a click event in the gesture record buttons
-	startButtonGest.addEventListener("click", function(){startButtonAction(previewGest,recordingGest,"gesture")}, false);
+	startButtonGest.addEventListener("click", function(){startButtonAction(previewGest,recordingGest)}, false);
 	stopButtonGest.addEventListener("click", function(){stopButtonAction(previewGest)}, false);
 }

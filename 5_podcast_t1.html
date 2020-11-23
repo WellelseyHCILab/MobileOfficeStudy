@@ -34,8 +34,8 @@
   <div class="container" id="about">
     <div class="row">
       <div class="col-lg-12 text-center">
-        <h1 class="mt-5">Podcast Scenario</h1>
-        <br>
+      <h1 class="mt-5">Podcast Scenario</h1>
+      <br>
       </div>
         <div class="col-lg-12 text-left">
           <div class="pageText">
@@ -43,111 +43,110 @@
             <p>The car has just taken over and is driving you safely to your destination.</p>
             <p>You want to listen to “The 7 Habits of Highly Effective People” podcast for work.</p>
             <p>As you're listening to the podcast, you want to pause and bookmark certain sections.</p>
-
             <br>
 
-            <form action="http://cs.wellesley.edu:8133/podcast/" method="POST">
-			<input type="hidden" name="taskNum" id="taskNum" value="1">
-			<input type="hidden" name="taskType" id="taskType" value="podcast">
+            <!--Beginning of form-->
+            <form id="surveyForm" action="https://cs.wellesley.edu:8133/podcast/" method="post">
+  		        <input type="hidden" name="taskNum" id="taskNum" value="1">
+  			      <input type="hidden" name="taskType" id="taskType" value="podcast">
 
-            <!--Task 1-->
-            <h4>Task 1:</h4>
-            <p>Your vehicle has just engaged autonomous driving.<p>
-            <p>Here is an image of the in-vehicle user interface:</p>
-            <img src="images/Intro_Outro/2.png" alt="task1_before" height="364" width="1000">
-            <br>
-            <br>
-            <p>How would you open the podcast application? What input command would result in the following user interface?</p>
-            <img src="images/Podcast/1.png" alt="task1_after" height="364" width="1000">
-            <br>
-            <br>
+              <!--Task 1-->
+              <h4>Task 1:</h4>
+              <p>Your vehicle has just engaged autonomous driving.<p>
+              <p>Here is an image of the in-vehicle user interface:</p>
+              <img src="images/Intro_Outro/2.png" alt="task1_before" height="364" width="1000">
+              <br>
+              <br>
+              <p>How would you open the podcast application? What input command would result in the following user interface?</p>
+              <img src="images/Podcast/1.png" alt="task1_after" height="364" width="1000">
+              <br>
+              <br>
+                <div class="form-group">
+                  <label for="voicecommand_task1"> Using a voice command, what you would tell the autonomous vehicle to do?</label>
+                  <br>
+                  <!--Video Recording Elements-->
+                  <div>
+                      <div class="left">
+                        <p>Video Preview</p>
+                        <video id="previewVoice" width="160" height="120" autoplay muted controls></video>
+                        <div class="recButtons">
+                          <!-- Start recording button-->
+                          <div id="startButtonVoice" class="button">
+                            <button type="button" class="btn btn-primary">Start</button>
+                          </div>
+                          <!--Stop recording -->
+                          <div id="stopButtonVoice" class="stopBttn" class="button">
+                            <button type="button" class="btn btn-primary">Stop</button>
+                          </div>
+                      </div>
+
+                      </div>
+
+                      <div class="right">
+                        <br>
+                        <p>Recording</p>
+                        <video class="vidPrev" id="recordingVoice" width="160" height="120" controls></video>
+                      </div>
+                    </div>
+                  <br>
+                </div>
+
               <div class="form-group">
-                <label for="voicecommand_task1"> Using a voice command, what you would tell the autonomous vehicle to do?</label>
-                <br>
-                <!--Video Recording Elements-->
-                <div>
-                    <div class="left">
-                      <p>Video Preview</p>
-                      <video id="previewVoice" width="160" height="120" autoplay muted controls></video>
-                      <div class="recButtons">
-                        <!-- Start recording button-->
-                        <div id="startButtonVoice" class="button">
-                          <button type="button" class="btn btn-primary">Start</button>
-                        </div>
-                        <!--Stop recording -->
-                        <div id="stopButtonVoice" class="stopBttn" class="button">
-                          <button type="button" class="btn btn-primary">Stop</button>
-                        </div>
-                    </div>
+                   <label for="gesture_task1">Using a gesture, how would you complete this task?</label>
+                  <br>
+                  <!--Video Recording Elements-->
+                  <div>
+                      <div class="left">
+                        <p>Video Preview</p>
+                        <video id="previewGest" width="160" height="120" autoplay muted controls></video>
+                        <div class="recButtons">
+                          <!-- Start recording button-->
+                          <div id="startButtonGest" class="button">
+                            <button type="button" class="btn btn-primary">Start</button>
+                          </div>
+                          <!--Stop recording -->
+                          <div id="stopButtonGest" class="stopBttn" class="button">
+                            <button type="button" class="btn btn-primary">Stop</button>
+                          </div>
+                      </div>
 
-                    </div>
+                      </div>
 
-                    <div class="right">
-                      <br>
-                      <p>Recording</p>
-                      <video class="vidPrev" id="recordingVoice" width="160" height="120" controls></video>
+                      <div class="right">
+                        <br>
+                        <p>Recording</p>
+                        <video class="vidPrev" id="recordingGest" width="160" height="120" controls></video>
+                      </div>
                     </div>
-                  </div>
-                <br>
+                    <br>
               </div>
 
-            <div class="form-group">
-                 <label for="gesture_task1">Using a gesture, how would you complete this task?</label>
+              <div>
+                <label for="select">What is your <b>preferred</b> interaction method for this task?</label>
+                <select class="form-control" id="select" name="select">
+                <option>Select an input</option>
+                <option>Voice</option>
+                <option>Gesture</option>
+                </select>
                 <br>
-                <!--Video Recording Elements-->
-                <div>
-                    <div class="left">
-                      <p>Video Preview</p>
-                      <video id="previewGest" width="160" height="120" autoplay muted controls></video>
-                      <div class="recButtons">
-                        <!-- Start recording button-->
-                        <div id="startButtonGest" class="button">
-                          <button type="button" class="btn btn-primary">Start</button>
-                        </div>
-                        <!--Stop recording -->
-                        <div id="stopButtonGest" class="stopBttn" class="button">
-                          <button type="button" class="btn btn-primary">Stop</button>
-                        </div>
-                    </div>
-
-                    </div>
-
-                    <div class="right">
-                      <br>
-                      <p>Recording</p>
-                      <video class="vidPrev" id="recordingGest" width="160" height="120" controls></video>
-                    </div>
-                  </div>
-                  <br>
-            </div>
-
-            <div>
-              <label for="select">What is your <b>preferred</b> interaction method for this task?</label>
-              <select class="form-control" id="select" name="select">
-              <option>Select an input</option>
-              <option>Voice</option>
-              <option>Gesture</option>
-              </select>
+                <label for="textarea">Why do you prefer this interaction method for this task?</label>
+  			        <textarea class="form-control" id="textarea" rows="3" name="textarea"></textarea>
+              </div>
               <br>
-              <label for="textarea">Why do you prefer this interaction method for this task?</label>
-			  <textarea class="form-control" id="textarea" rows="3" name="textarea"></textarea>
+              <!--End Task 1-->       
             </div>
-            <br>
-            <!--End Task 1-->
 
-            
+            <!--Next Button-->
+            <div class="col-lg-12 text-center">
+            <br>
+  				  <br>
+
+  				  <input type="submit" value="Next" class="btn btn-primary">
+  				
           </div>
+		  </form>
+      <!--End of form-->
 
-          <!--Back and Next Buttons-->
-           <div class="col-lg-12 text-center">
-            <br>
-            <!--<a href="4_ex_scenario.html"><button type="button" class="btn btn-primary">Back</button></a>-->
-			 <!--<a href="5_podcast_t2.html"><button type="button" class="btn btn-primary">Next</button></a>-->
-				<br>
-				 <input type="submit" value="Next" class="btn btn-primary">
-				 <!--<a href="5_podcast_t1.html"><button type="button" class="btn btn-primary">Begin Tasks</button></a>-->
-           </div>
-		</form>
      </div>
     </div>
   </div>
@@ -158,7 +157,7 @@
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
   <!-- Video Recording Scripts -->
-  <script src="js/main.js"></script>
+  <script src="js/main.js?=v9"></script>
 
   <!--AJAX Library-->
   <script src="https://ajax.googleapis.com/ajax/libs/d3js/5.15.1/d3.min.js"></script>
@@ -170,7 +169,7 @@
   <hr class="my-4">
   <!-- Copyright -->
   <div class="footer-copyright text-center py-3">© 2020 Copyright:
-    <a href="http://cs.wellesley.edu/~hcilab/">Wellesley HCI Lab</a>
+    <a href="https://cs.wellesley.edu/~hcilab/">Wellesley HCI Lab</a>
   </div>
   <!-- Copyright -->
 
