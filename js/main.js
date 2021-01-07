@@ -1,7 +1,7 @@
 //Info on Media Stream and base code can be found at 
 //https://developer.mozilla.org/en-US/docs/Web/API/MediaStream_Recording_API/Recording_a_media_element
 
-console.log("Version 9");
+console.log("Version 10");
 
 if(top.location.pathname.includes("5") || top.location.pathname.includes("6") || top.location.pathname.includes("7") || top.location.pathname.includes("8")){
 	
@@ -27,30 +27,37 @@ if(top.location.pathname.includes("5") || top.location.pathname.includes("6") ||
 	let recordingTimeMS = 15000;
 	
 	let form = document.getElementById('surveyForm');
+
+	let blobsArray = [];
 	
 	form.addEventListener("submit", function (event) {
          event.preventDefault(); // prevent form submission and reloading the page.
-			let formInfo = new FormData(form)
-		//formInfo.append('voiceBlob', voiceBlob)
-		
-//		let request = new XMLHttpRequest();
-//		request.open("POST", "https://cs.wellesley.edu:8133/podcast/", true);
-//		console.log('form info', ...formInfo)
-//		for (var [key, value] of formInfo.entries()) { 
-//  			console.log(key, value);
-//		}
-//		request.send(formInfo);
-		var url = 'https://cs.wellesley.edu:8133/podcast/';
+			let formInfo = new FormData(form);
+			console.log(`formInfo is ${formInfo}`);
+			formInfo.append("blobs", blobsArray[0], "voiceBlob.webm");
+			formInfo.append("blobs", blobsArray[1], "gestureBlob.webm");
+			console.log('form info', ...formInfo);
+		var url = `https://cs.wellesley.edu:8133/${taskType}/`;
 
+		//send a post request with video data
 		fetch(url, {
 			method: 'post',
-			headers: {
-			  "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
-			},
+			credentials: 'include',
 			body: formInfo
 			})
-		.then(function (data) {
+		.then(data => {
 		console.log('Request succeeded with JSON response', data);
+		//redirect to the next task
+		if (data.url.includes("podcast") || data.url.includes("presentation")){
+			//go to a random leisure task
+			let leisureTaskUrl = selectLeisureTask();
+		    window.location.href = leisureTaskUrl;
+		}
+		else if (data.url.includes("karaoke") || data.url.includes("audiobook")){
+			//after finishing leisure task, go to the end
+			window.location.href = 'https://cs.wellesley.edu/~mobileoffice/study/9_endsurvey.html';
+		}
+		
 		})
 		.catch(function (error) {
 		console.log('Request failed', error);
@@ -58,8 +65,6 @@ if(top.location.pathname.includes("5") || top.location.pathname.includes("6") ||
 			
      });
 	
-	let voiceBlob = null;
-
 	function wait(delayInMS) {
 	  return new Promise(resolve => setTimeout(resolve, delayInMS));
 	}
@@ -108,8 +113,7 @@ if(top.location.pathname.includes("5") || top.location.pathname.includes("6") ||
 		let recordedBlob = new Blob(recordedChunks, { type: "video/webm" });
 		  recording.src = URL.createObjectURL(recordedBlob);
 		  console.log(recordedBlob);
-		  sessionStorage.setItem("blobData",recordedBlob);
-		  voiceBlob = recordedBlob;
+		  blobsArray.push(recordedBlob);
 	  })
 	  .catch("Error");
 	}
@@ -126,4 +130,16 @@ if(top.location.pathname.includes("5") || top.location.pathname.includes("6") ||
 	//event handlers for a click event in the gesture record buttons
 	startButtonGest.addEventListener("click", function(){startButtonAction(previewGest,recordingGest)}, false);
 	stopButtonGest.addEventListener("click", function(){stopButtonAction(previewGest)}, false);
+}
+
+let selectLeisureTask = () => {
+	var randNum = Math.floor(Math.random() * 2);
+	if (randNum){
+		//Generate a random number, 1 or 5 inclusive
+		let randTaskNum = 1+ Math.floor(Math.random() * 5);
+		return `https://cs.wellesley.edu/~mobileoffice/study/6_karaoke_t${randTaskNum}.html`;
+	} else {
+		let randTaskNum = 1+ Math.floor(Math.random() * 5);
+		return `https://cs.wellesley.edu/~mobileoffice/study/7_audiobook_t${randTaskNum}.html`;
+	}
 }
