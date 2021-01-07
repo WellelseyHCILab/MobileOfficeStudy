@@ -40,7 +40,9 @@
             <p>You want to listen to “The 7 Habits of Highly Effective People” podcast for work.</p>
             <p>As you're listening to the podcast, you want to pause and bookmark certain sections.</p>
             <br>
-            <form>
+            <form id="surveyForm" action="https://cs.wellesley.edu:8133/podcast/" method="post">
+  		        <input type="hidden" name="taskNum" id="taskNum" value="5">
+  			      <input type="hidden" name="taskType" id="taskType" value="podcast">
 
             <!--Task 5-->
             <h4>Task 5:</h4>
@@ -111,32 +113,31 @@
             </div>
 
             <div>
-              <label for="exampleFormControlSelect1">What is your <b>preferred</b> interaction method for this task?</label>
-              <select class="form-control" id="exampleFormControlSelect1">
+              <label for="select">What is your <b>preferred</b> interaction method for this task?</label>
+                <select class="form-control" id="select" name="select">
               <option>Select an input</option>
               <option>Voice</option>
               <option>Gesture</option>
               </select>
               <br>
-              <label for="exampleFormControlTextarea1">Why do you prefer this interaction method for this task?</label>
-              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+              <label for="textarea">Why do you prefer this interaction method for this task?</label>
+  			        <textarea class="form-control" id="textarea" rows="3" name="textarea"></textarea>
             </div>
             <br>
             <!--End Task 5-->
 
-            </form>
           </div>
         </div>
 
-          <!--Back and Next Buttons-->
-           <div class="col-lg-12 text-center">
-            <br>
-            <a href="5_podcast_t4.html"><button type="button" class="btn btn-primary">Back</button></a>
-            <a href="5_podcast_t6.html"><button type="button" class="btn btn-primary">Next</button></a>
-           </div>
+          <!--Next Button-->
+            <div class="col-lg-12 text-center">
+              <br>
+              <br>
+              <input type="submit" value="Next" class="btn btn-primary">
+            </div>
+        </form>
      </div>
     </div>
-  </div>
 
   <!-- Bootstrap core JavaScript -->
   <script src="vendor/jquery/jquery.slim.min.js"></script>

@@ -41,7 +41,9 @@
         <p>You want to continue listening to the audiobook "Children of Virtue and Vengeance."</p>
         <br>
 
-        <form>
+        <form id="surveyForm" action="https://cs.wellesley.edu:8133/audiobook/" method="post">
+          <input type="hidden" name="taskNum" id="taskNum" value="5">
+          <input type="hidden" name="taskType" id="taskType" value="audiobook">
 
         <!--Task 5-->
         <h4>Task 6:</h4>
@@ -115,30 +117,29 @@
         </div>
 
         <div>
-          <label for="exampleFormControlSelect1">What is your <b>preferred</b> interaction method for this task?</label>
-          <select class="form-control" id="exampleFormControlSelect1">
+          <label for="select">What is your <b>preferred</b> interaction method for this task?</label>
+          <select class="form-control" id="select" name="select">
           <option>Select an input</option>
           <option>Voice</option>
           <option>Gesture</option>
           </select>
           <br>
-          <label for="exampleFormControlTextarea1">Why do you prefer this interaction method for this task?</label>
-          <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+          <label for="textarea">Why do you prefer this interaction method for this task?</label>
+          <textarea class="form-control" id="textarea" rows="3" name="textarea"></textarea>
         </div>
         <br>
         <!--End Task 5-->
 
       </div>
-
-        </form>
-      </div>
-
-      <!--Back and Next Buttons-->
-       <div class="col-lg-12 text-center">
+      <!--Next Button-->
+      <div class="col-lg-12 text-center">
         <br>
-        <a href="7_audiobook_t4.html"><button type="button" class="btn btn-primary">Back</button></a>
-        <a href="8_presentation_t1.html"><button type="button" class="btn btn-primary">Next</button></a>
-       </div>
+        <br>
+        <input type="submit" value="Next" class="btn btn-primary">
+      </div>
+        </form>
+      
+      </div>
 
     </div>
   </div>

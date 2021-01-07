@@ -33,7 +33,6 @@ if(top.location.pathname.includes("5") || top.location.pathname.includes("6") ||
 	form.addEventListener("submit", function (event) {
          event.preventDefault(); // prevent form submission and reloading the page.
 			let formInfo = new FormData(form);
-			console.log(`formInfo is ${formInfo}`);
 			formInfo.append("blobs", blobsArray[0], "voiceBlob.webm");
 			formInfo.append("blobs", blobsArray[1], "gestureBlob.webm");
 			console.log('form info', ...formInfo);
@@ -135,7 +134,7 @@ if(top.location.pathname.includes("5") || top.location.pathname.includes("6") ||
 let selectLeisureTask = () => {
 	var randNum = Math.floor(Math.random() * 2);
 	if (randNum){
-		//Generate a random number, 1 or 5 inclusive
+		//Generate a random number, 1 to 5 inclusive
 		let randTaskNum = 1+ Math.floor(Math.random() * 5);
 		return `https://cs.wellesley.edu/~mobileoffice/study/6_karaoke_t${randTaskNum}.html`;
 	} else {
