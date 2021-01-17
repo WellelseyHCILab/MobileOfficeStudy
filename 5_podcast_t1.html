@@ -76,7 +76,7 @@
                           </div>
                           <!--Stop recording -->
                           <div id="stopButtonVoice" class="stopBttn" class="button">
-                            <button type="button" class="btn btn-primary">Stop</button>
+                            <button type="button" class="btn btn-primary stopBttn1">Stop</button>
                           </div>
                       </div>
 
@@ -84,8 +84,8 @@
 
                       <div class="right">
                         <br>
-                        <p>Recording</p>
-                        <video class="vidPrev" id="recordingVoice" width="160" height="120" controls></video>
+                        <p class="recordingtext">Recording</p>
+                        <video class="vidPrev" id="recordingVoice" width="160" height="120" controls required></video>
                       </div>
                     </div>
                   <br>
@@ -106,7 +106,7 @@
                           </div>
                           <!--Stop recording -->
                           <div id="stopButtonGest" class="stopBttn" class="button">
-                            <button type="button" class="btn btn-primary">Stop</button>
+                            <button type="button" class="btn btn-primary stopBttn2">Stop</button>
                           </div>
                       </div>
 
@@ -114,7 +114,7 @@
 
                       <div class="right">
                         <br>
-                        <p>Recording</p>
+                        <p class="recordingtext">Recording</p>
                         <video class="vidPrev" id="recordingGest" width="160" height="120" controls></video>
                       </div>
                     </div>
@@ -123,14 +123,14 @@
 
               <div>
                 <label for="select">What is your <b>preferred</b> interaction method for this task?</label>
-                <select class="form-control" id="select" name="select">
-                <option>Select an input</option>
+                <select class="form-control" id="select" name="select" required>
+                <option value="">Select an input</option>
                 <option>Voice</option>
                 <option>Gesture</option>
                 </select>
                 <br>
                 <label for="textarea">Why do you prefer this interaction method for this task?</label>
-  			        <textarea class="form-control" id="textarea" rows="3" name="textarea"></textarea>
+  			        <textarea class="form-control" id="textarea" rows="3" name="textarea" required></textarea>
               </div>
               <br>
               <!--End Task 1-->       
