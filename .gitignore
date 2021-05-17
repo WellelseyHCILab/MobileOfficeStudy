@@ -1,0 +1,8 @@
+#Ignore Mac system files
+.DS_store
+
+#Ignore Node Modules
+vendor
+
+#Ignore readme
+Bootstrap_README.md

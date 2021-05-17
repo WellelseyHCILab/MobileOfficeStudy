@@ -2,12 +2,54 @@
 //https://developer.mozilla.org/en-US/docs/Web/API/MediaStream_Recording_API/Recording_a_media_element
 
 console.log("Version 10");
-//let sessionStorage = window.localStorage;
 //console.log("sessionstorage is" + JSON.stringify(sessionStorage))
 
-if (top.location.pathname.includes("5") || top.location.pathname.includes("6") || top.location.pathname.includes("7") || top.location.pathname.includes("8")) {
 
-	console.log("in a scenario page");
+
+if (!navigator.mediaDevices || !navigator.mediaDevices.enumerateDevices) {
+	console.log("This browser does not support the API yet");
+}
+
+else {
+	let pathName = top.location.pathname;
+	let pathNameIsTaskPage = pathName.includes("presentation") || 
+	pathName.includes("audiobook") || 
+	pathName.includes("podcast") ||
+	pathName.includes("karaoke");
+	if (pathNameIsTaskPage){
+		//check if user has a working webcam or audioinput
+		let md = navigator.mediaDevices;
+		console.log(md.enumerateDevices())
+		md.enumerateDevices().then(devices => {
+			const hasAudioInput = devices.some(device => 'audioinput' === device.kind);
+			const hasWebcam = devices.some(device => 'videoinput' === device.kind);
+			if (!hasAudioInput || !hasWebcam) {
+				console.log("This device does not have audio input or webcam.");
+				window.location.href = `https://cs.wellesley.edu/~mobileoffice/study/sorry.html`;
+			}
+			else {
+				console.log("This device has valid audio input and webcam.")
+			}
+		})
+
+		//check if user has denied permission or not
+		let constraints={audio:true,video:true};
+		navigator.mediaDevices.getUserMedia(constraints)
+		.then((stream)=>{
+			console.log("stream is", stream)
+		})
+		.catch((err)=>
+			{if(err.name=="NotAllowedError"){
+				console.log("User has denied accessed");
+				window.location.href = `https://cs.wellesley.edu/~mobileoffice/study/sorry.html`;
+			}
+			});
+			}
+}
+
+
+
+if (top.location.pathname.includes("5") || top.location.pathname.includes("6") || top.location.pathname.includes("7") || top.location.pathname.includes("8")) {
 
 	//variables for voice recording
 	let previewVoice = document.getElementById("previewVoice");
@@ -30,37 +72,26 @@ if (top.location.pathname.includes("5") || top.location.pathname.includes("6") |
 
 	let form = document.getElementById('surveyForm');
 	let texts = document.getElementsByClassName("recordingtext");
-	console.log("texts is", texts)
+	//console.log("texts is", texts)
 
 
 	let stopBttn1 = document.getElementsByClassName("stopBttn1");
 	let stopBttn2 = document.getElementsByClassName("stopBttn2");
 	stopBttn1[0].addEventListener('click', (event) => {
-		texts[0].textContent = "Loading......";
+		texts[0].textContent = "Uploading......";
 	});
 	stopBttn2[0].addEventListener('click', (event) => {
-		texts[1].textContent = "Loading......";
+		texts[1].textContent = "Uploading......";
 	});
-
-
-	let blobsArray = [];
-	// let video1 = document.getElementById("recordingGest");
-	// let video2 = document.getElementById("recordingVoice");
-
-	// if (video1.getAttribute("src")) {
-	// 	texts[0].textContent = "Recording Completed"
-	// }
-	// if (video2.getAttribute("src")) {
-	// 	texts[1].textContent = "Recording Completed"
-	// }
-
+	
+	let blobsArray = [null, null];
 	let currURL = top.location.pathname;
 
 	form.addEventListener("submit", function (event) {
 		event.preventDefault(); // prevent form submission and reloading the page.
 		let formInfo = new FormData(form);
-		if (blobsArray.length !== 2) {
-			alert("Please complete both video recordings.");
+		if (blobsArray.length !== 2 || blobsArray[1] === null || blobsArray[0] === null) {
+			alert("Please complete both video recordings and wait for uploads to finish.");
 			return;
 		}
 		try {
@@ -197,11 +228,16 @@ if (top.location.pathname.includes("5") || top.location.pathname.includes("6") |
 				let recordedBlob = new Blob(recordedChunks, { type: "video/webm" });
 				recording.src = URL.createObjectURL(recordedBlob);
 				console.log(recordedBlob);
-				if (type === "voice")
-				texts[0].textContent = "Completed"
-				else
-				texts[1].textContent = "Completed"
-				blobsArray.push(recordedBlob);
+				if (type === "voice") {
+					texts[0].textContent = "Completed"
+					blobsArray[0] = recordedBlob;
+				}
+				else {
+					texts[1].textContent = "Completed"
+					blobsArray[1] = recordedBlob;
+				}
+
+
 			})
 			.catch("Error");
 	}
