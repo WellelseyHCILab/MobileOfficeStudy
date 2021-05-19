@@ -25,7 +25,7 @@ else {
 			const hasWebcam = devices.some(device => 'videoinput' === device.kind);
 			if (!hasAudioInput || !hasWebcam) {
 				console.log("This device does not have audio input or webcam.");
-				window.location.href = `https://cs.wellesley.edu/~mobileoffice/study/sorry.html`;
+				window.location.href = `http://ec2-3-80-137-223.compute-1.amazonaws.com/~mobileoffice/study/sorry.html`;
 			}
 			else {
 				console.log("This device has valid audio input and webcam.")
@@ -41,7 +41,7 @@ else {
 		.catch((err)=>
 			{if(err.name=="NotAllowedError"){
 				console.log("User has denied accessed");
-				window.location.href = `https://cs.wellesley.edu/~mobileoffice/study/sorry.html`;
+				window.location.href = `http://ec2-3-80-137-223.compute-1.amazonaws.com/~mobileoffice/study/sorry.html`;
 			}
 			});
 			}
@@ -104,7 +104,7 @@ if (top.location.pathname.includes("5") || top.location.pathname.includes("6") |
 		}
 
 		console.log('form info', ...formInfo);
-		var url = `https://cs.wellesley.edu:8133/${taskType}/`;
+		var url = `http://ec2-3-80-137-223.compute-1.amazonaws.com:8133/${taskType}/`;
 
 		//send a post request with video data
 		fetch(url, {
@@ -119,23 +119,23 @@ if (top.location.pathname.includes("5") || top.location.pathname.includes("6") |
 					//go to the next podcast task
 
 					let nextTaskNum = parseInt(currURL.slice(-6)[0]) + 1;
-					window.location.href = `https://cs.wellesley.edu/~mobileoffice/study/5_podcast_t${nextTaskNum}.html`;
+					window.location.href = `http://ec2-3-80-137-223.compute-1.amazonaws.com/~mobileoffice/study/5_podcast_t${nextTaskNum}.html`;
 
 				}
 				else if ((currURL.includes("presentation") && !currURL.includes("t8"))) {
 					//go to the next presentation task
 					let nextTaskNum = parseInt(currURL.slice(-6)[0]) + 1;
-					window.location.href = `https://cs.wellesley.edu/~mobileoffice/study/8_presentation_t${nextTaskNum}.html`;
+					window.location.href = `http://ec2-3-80-137-223.compute-1.amazonaws.com/~mobileoffice/study/8_presentation_t${nextTaskNum}.html`;
 				}
 				else if ((currURL.includes("audiobook") && !currURL.includes("t5"))) {
 					//go to the next audiobook task
 					let nextTaskNum = parseInt(currURL.slice(-6)[0]) + 1;
-					window.location.href = `https://cs.wellesley.edu/~mobileoffice/study/7_audiobook_t${nextTaskNum}.html`;
+					window.location.href = `http://ec2-3-80-137-223.compute-1.amazonaws.com/~mobileoffice/study/7_audiobook_t${nextTaskNum}.html`;
 				}
 				else if ((currURL.includes("karaoke") && !currURL.includes("t5"))) {
 					//go to then next karaoke task
 					let nextTaskNum = parseInt(currURL.slice(-6)[0]) + 1;
-					window.location.href = `https://cs.wellesley.edu/~mobileoffice/study/6_karaoke_t${nextTaskNum}.html`;
+					window.location.href = `http://ec2-3-80-137-223.compute-1.amazonaws.com/~mobileoffice/study/6_karaoke_t${nextTaskNum}.html`;
 				}
 				else if (currURL.includes("podcast_t6") || currURL.includes("presentation_t8")) {
 					//go to leisure task or to the end
@@ -143,7 +143,7 @@ if (top.location.pathname.includes("5") || top.location.pathname.includes("6") |
 					if (sessionStorage.getItem('hasDoneTaskBefore')) {
 						//to the end
 						sessionStorage.setItem('hasDoneTaskBefore', false);
-						window.location.href = 'https://cs.wellesley.edu/~mobileoffice/study/9_endsurvey.html';
+						window.location.href = 'http://ec2-3-80-137-223.compute-1.amazonaws.com/~mobileoffice/study/9_endsurvey.html';
 					}
 
 					else {
@@ -158,7 +158,7 @@ if (top.location.pathname.includes("5") || top.location.pathname.includes("6") |
 					console.log(sessionStorage.getItem('hasDoneTaskBefore'));
 					if (sessionStorage.getItem('hasDoneTaskBefore')) {
 						sessionStorage.setItem('hasDoneTaskBefore', false);
-						window.location.href = 'https://cs.wellesley.edu/~mobileoffice/study/9_endsurvey.html';
+						window.location.href = 'http://ec2-3-80-137-223.compute-1.amazonaws.com/~mobileoffice/study/9_endsurvey.html';
 					}
 					//to the end
 
@@ -261,10 +261,10 @@ const selectLeisureTask = () => {
 	if (randNum) {
 		//Generate a random number, 1 to 5 inclusive
 		//let randTaskNum = 1+ Math.floor(Math.random() * 5);
-		return `https://cs.wellesley.edu/~mobileoffice/study/6_karaoke_t1.html`;
+		return `http://ec2-3-80-137-223.compute-1.amazonaws.com/~mobileoffice/study/6_karaoke_t1.html`;
 	} else {
 		//let randTaskNum = 1+ Math.floor(Math.random() * 5);
-		return `https://cs.wellesley.edu/~mobileoffice/study/7_audiobook_t1.html`;
+		return `http://ec2-3-80-137-223.compute-1.amazonaws.com/~mobileoffice/study/7_audiobook_t1.html`;
 	}
 }
 
@@ -273,9 +273,9 @@ const selectWorkTask = () => {
 	if (randNum) {
 		//Generate a random number, 1 to 5 inclusive
 		//let randTaskNum = 1+ Math.floor(Math.random() * 5);
-		return `https://cs.wellesley.edu/~mobileoffice/study/5_podcast_t1.html`;
+		return `http://ec2-3-80-137-223.compute-1.amazonaws.com/~mobileoffice/study/5_podcast_t1.html`;
 	} else {
 		//let randTaskNum = 1+ Math.floor(Math.random() * 5);
-		return `https://cs.wellesley.edu/~mobileoffice/study/8_presentation_t1.html`;
+		return `http://ec2-3-80-137-223.compute-1.amazonaws.com/~mobileoffice/study/8_presentation_t1.html`;
 	}
 }
